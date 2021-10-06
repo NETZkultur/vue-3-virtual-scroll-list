@@ -448,6 +448,12 @@ export default defineComponent({
           list
       );
 
+      let height = props.size * props.remain;
+
+      if (props.remain > props.itemcount) {
+        height = props.size * props.itemcount;
+      }
+
       return h(
           rtag,
           {
@@ -455,7 +461,7 @@ export default defineComponent({
             style: {
               display: "block",
               "overflow-y": props.size >= props.remain ? "auto" : "initial",
-              height: props.size * props.remain + "px"
+              height: height + "px"
             },
             onScroll: onScroll
           },

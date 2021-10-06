@@ -469,12 +469,18 @@ function _nonIterableRest() {
         class: props.wclass,
         role: "group"
       }, list);
+      var height = props.size * props.remain;
+
+      if (props.remain > props.itemcount) {
+        height = props.size * props.itemcount;
+      }
+
       return vue.h(rtag, {
         ref: vsl,
         style: {
           display: "block",
           "overflow-y": props.size >= props.remain ? "auto" : "initial",
-          height: props.size * props.remain + "px"
+          height: height + "px"
         },
         onScroll: onScroll
       }, [renderList]);
