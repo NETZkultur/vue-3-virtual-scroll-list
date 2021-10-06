@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <VirtualList :size="50" :remain="20" :variable="true" >
+    <VirtualList :size="50" :remain="20" :variable="true" v-on:tobottom="bottomReached">
       <div v-for="item of list" :key="item" :style="{ height: 15 + 'px' }">
         {{ item }}
       </div>
@@ -10,7 +10,7 @@
 
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 import VirtualList from '@/virtual-list.vue';
 
 export default defineComponent({
@@ -20,7 +20,10 @@ export default defineComponent({
   },
   data() {
     return {
-      list: [] as number[]
+      list: [] as number[],
+      bottomReached: () => {
+        console.log('bottomReached');
+      }
     }
   },
   mounted() {

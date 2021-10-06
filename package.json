@@ -6,7 +6,7 @@
   "browser": "dist/virtual-list.esm.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/supertiger1234/vue-3-virtual-scroll-list.git"
+    "url": "https://github.com/NETZkultur/vue-3-virtual-scroll-list.git"
   },
   "module": "dist/virtual-list.esm.js",
   "unpkg": "dist/virtual-list.min.js",

@@ -80,17 +80,18 @@ export default defineComponent({
       type: Function,
       /* istanbul ignore next */
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      default: () => {}
+      default: () => {
+      }
     }
   },
   methods: {
     forceRender() {
       window.requestAnimationFrame(() => {
-       this.$forceUpdate();
+        this.$forceUpdate();
       });
     },
     // set manual scroll top.
-    setScrollTop (scrollTop: number) {
+    setScrollTop(scrollTop: number) {
       this.$el.scrollTop = scrollTop;
     }
   },
@@ -127,8 +128,8 @@ export default defineComponent({
     const defaultSlot = computed(() => {
       const slots = (context.slots as any)?.default?.() as VNode[];
       return slots
-        .map(s => (s.type.toString().startsWith("Symbol") ? s.children : s))
-        .flat() as VNode[];
+          .map(s => (s.type.toString().startsWith("Symbol") ? s.children : s))
+          .flat() as VNode[];
     });
 
     // return the right zone info based on `start/index`.
@@ -140,7 +141,7 @@ export default defineComponent({
 
       const lastStart = delta.total - delta.keeps;
       const isLast =
-        (index <= delta.total && index >= lastStart) || index > delta.total;
+          (index <= delta.total && index >= lastStart) || index > delta.total;
 
       if (isLast) {
         start = Math.max(0, lastStart);
@@ -199,8 +200,8 @@ export default defineComponent({
 
       delta.varLastCalcIndex = Math.max(delta.varLastCalcIndex, index - 1);
       delta.varLastCalcIndex = Math.min(
-        delta.varLastCalcIndex,
-        delta.total - 1
+          delta.varLastCalcIndex,
+          delta.total - 1
       );
 
       return offset;
@@ -220,13 +221,13 @@ export default defineComponent({
       // if start, size or offset change, update scroll position.
       if (changeProp && ["start", "size", "offset"].includes(changeProp)) {
         const scrollTop =
-          changeProp === "offset"
-            ? props.offset
-            : props.variable
-            ? getVarOffset(zone.isLast ? delta.total : zone.start)
-            : zone.isLast && delta.total - calcstart <= props.remain
-            ? delta.total * props.size
-            : calcstart * props.size;
+            changeProp === "offset"
+                ? props.offset
+                : props.variable
+                    ? getVarOffset(zone.isLast ? delta.total : zone.start)
+                    : zone.isLast && delta.total - calcstart <= props.remain
+                        ? delta.total * props.size
+                        : calcstart * props.size;
 
         nextTick(setScrollTop.bind(this, scrollTop));
       }
@@ -244,8 +245,8 @@ export default defineComponent({
     const getVarPaddingBottom = () => {
       const last = delta.total - 1;
       if (
-        delta.total - delta.end <= delta.keeps ||
-        delta.varLastCalcIndex === last
+          delta.total - delta.end <= delta.keeps ||
+          delta.varLastCalcIndex === last
       ) {
         return getVarOffset(last) - getVarOffset(delta.end);
       } else {
@@ -266,14 +267,14 @@ export default defineComponent({
     // return the variable all heights use to judge reach bottom.
     const getVarAllHeight = () => {
       if (
-        delta.total - delta.end <= delta.keeps ||
-        delta.varLastCalcIndex === delta.total - 1
+          delta.total - delta.end <= delta.keeps ||
+          delta.varLastCalcIndex === delta.total - 1
       ) {
         return getVarOffset(delta.total);
       } else {
         return (
-          getVarOffset(delta.start) +
-          (delta.total - delta.end) * (delta.varAverSize || props.size)
+            getVarOffset(delta.start) +
+            (delta.total - delta.end) * (delta.varAverSize || props.size)
         );
       }
     };
@@ -297,8 +298,8 @@ export default defineComponent({
         allHeight = props.size * delta.total;
         paddingTop = props.size * (hasPadding ? delta.start : 0);
         paddingBottom =
-          props.size * (hasPadding ? delta.total - delta.keeps : 0) -
-          paddingTop;
+            props.size * (hasPadding ? delta.total - delta.keeps : 0) -
+            paddingTop;
       }
 
       if (paddingBottom < props.size) {
@@ -311,9 +312,9 @@ export default defineComponent({
 
       const renders: VNode[] = [];
       for (
-        let i = delta.start;
-        i < delta.total && i <= Math.ceil(delta.end);
-        i++
+          let i = delta.start;
+          i < delta.total && i <= Math.ceil(delta.end);
+          i++
       ) {
         let slot = slots[i];
         renders.push(slot);
@@ -352,8 +353,8 @@ export default defineComponent({
     // update render zone by scroll offset.
     const updateZone = (offset: number) => {
       let overs = props.variable
-        ? getVarOvers(offset)
-        : Math.floor(offset / props.size);
+          ? getVarOvers(offset)
+          : Math.floor(offset / props.size);
 
       // if scroll up, we'd better decrease it's numbers.
       if (delta.direction === "U") {
@@ -367,19 +368,19 @@ export default defineComponent({
       // and if it's close to the last item, render next zone immediately.
       const shouldRenderNextZone = Math.abs(overs - delta.start - bench) === 1;
       if (
-        !shouldRenderNextZone &&
-        overs - delta.start <= bench &&
-        !zone.isLast &&
-        overs > delta.start
+          !shouldRenderNextZone &&
+          overs - delta.start <= bench &&
+          !zone.isLast &&
+          overs > delta.start
       ) {
         return;
       }
 
       // make sure forceRender calls as less as possible.
       if (
-        shouldRenderNextZone ||
-        zone.start !== delta.start ||
-        zone.end !== delta.end
+          shouldRenderNextZone ||
+          zone.start !== delta.start ||
+          zone.end !== delta.end
       ) {
         delta.end = zone.end;
         delta.start = zone.start;
@@ -401,28 +402,28 @@ export default defineComponent({
         delta.end = delta.total - 1;
       }
 
-      // const offsetAll = delta.offsetAll;
-      // if (this.onscroll) {
-      //   const param = Object.create(null);
-      //   param.offset = offset;
-      //   param.offsetAll = offsetAll;
-      //   param.start = delta.start;
-      //   param.end = delta.end;
-      //   // props.onscroll(event, param);
-      // }
+      const offsetAll = delta.offsetAll;
+      if (props.onscroll) {
+        const param = Object.create(null);
+        param.offset = offset;
+        param.offsetAll = offsetAll;
+        param.start = delta.start;
+        param.end = delta.end;
+        // props.onscroll(event, param);
+      }
 
-      // if (!offset && delta.total) {
-      //   this.fireEvent("totop");
-      // }
+      if (!offset && delta.total) {
+        context.emit("totop");
+      }
 
-      // if (offset >= offsetAll) {
-      //   this.fireEvent("tobottom");
-      // }
+      if (offset >= offsetAll) {
+        context.emit("tobottom");
+      }
     };
 
     return () => {
       let list = filter();
-      const { paddingTop, paddingBottom } = delta;
+      const {paddingTop, paddingBottom} = delta;
 
       const istable = props.istable;
       const wtag = istable ? "div" : props.wtag;
@@ -431,34 +432,35 @@ export default defineComponent({
         list = [h("table", [h("tbody", list)])];
       }
       const renderList = h(
-        wtag,
-        {
-          style: Object.assign(
-            {
-              display: "block",
-              "padding-top": paddingTop + "px",
-              "padding-bottom": paddingBottom + "px"
-            },
-            props.wstyle
-          ),
-          class: props.wclass,
-          role: "group"
-        },
-        list
+          wtag,
+          {
+            style: Object.assign(
+                {
+                  display: "block",
+                  "padding-top": paddingTop + "px",
+                  "padding-bottom": paddingBottom + "px"
+                },
+                props.wstyle
+            ),
+            class: props.wclass,
+            role: "group"
+          },
+          list
       );
 
       return h(
-        rtag,
-        {
-          ref: vsl,
-          style: {
-            display: "block",
-            "overflow-y": props.size >= props.remain ? "auto" : "initial",
-            height: props.size * props.remain + "px"
+          rtag,
+          {
+            ref: vsl,
+            style: {
+              display: "block",
+              "overflow-y": props.size >= props.remain ? "auto" : "initial"
+              // ,
+              // height: props.size * props.remain + "px"
+            },
+            onScroll: onScroll
           },
-          onScroll: onScroll
-        },
-        [renderList]
+          [renderList]
       );
     };
   }
