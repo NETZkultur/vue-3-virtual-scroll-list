@@ -454,9 +454,8 @@ export default defineComponent({
             ref: vsl,
             style: {
               display: "block",
-              "overflow-y": props.size >= props.remain ? "auto" : "initial"
-              // ,
-              // height: props.size * props.remain + "px"
+              "overflow-y": props.size >= props.remain ? "auto" : "initial",
+              height: props.size * props.remain + "px"
             },
             onScroll: onScroll
           },
