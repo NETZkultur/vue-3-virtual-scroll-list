@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <VirtualList :size="50" :remain="20" :variable="true" v-on:tobottom="bottomReached">
+    <VirtualList :size="50" :remain="20" :variable="true" v-on:tobottom="bottomReached" :itemcount="list.length">
       <div v-for="item of list" :key="item" :style="{ height: 15 + 'px' }">
         {{ item }}
       </div>
@@ -27,7 +27,7 @@ export default defineComponent({
     }
   },
   mounted() {
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 10; i++) {
       this.list.push(i);
     }
   }
