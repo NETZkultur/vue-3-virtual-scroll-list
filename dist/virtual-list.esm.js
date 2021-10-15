@@ -409,19 +409,17 @@ var script = defineComponent({
         }, props.wstyle),
         class: props.wclass,
         role: "group"
-      }, list);
-      let height = props.size * props.remain;
-
-      if (props.remain > props.itemcount) {
-        height = props.size * props.itemcount;
-      }
+      }, list); // let height = props.size * props.remain;
+      // if (props.remain > props.itemcount) {
+      //   height = props.size * props.itemcount;
+      // }
 
       return h(rtag, {
         ref: vsl,
         style: {
           display: "block",
           "overflow-y": props.size >= props.remain ? "auto" : "initial",
-          height: height + "px"
+          height: '100%'
         },
         onScroll: onScroll
       }, [renderList]);
