@@ -20,6 +20,10 @@ export default defineComponent({
       type: Number,
       required: true
     },
+    paddingTop: {
+      type: Number,
+      required: false
+    },
     rtag: {
       type: String,
       default: "div"
@@ -448,10 +452,15 @@ export default defineComponent({
           list
       );
 
-      // let height = props.size * props.remain;
-      // if (props.remain > props.itemcount) {
-      //   height = props.size * props.itemcount;
-      // }
+      let height = props.size * props.remain;
+      if (props.remain > props.itemcount) {
+        height = props.size * props.itemcount;
+      }
+
+      if (props.paddingTop !== undefined) {
+        height = height - props.paddingTop
+      }
+
       return h(
           rtag,
           {
@@ -459,7 +468,7 @@ export default defineComponent({
             style: {
               display: "block",
               "overflow-y": props.size >= props.remain ? "auto" : "initial",
-              height: '100%'
+              height: height + "px"
             },
             onScroll: onScroll
           },
