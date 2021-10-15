@@ -10,6 +10,10 @@ var script = defineComponent({
       type: Number,
       required: true
     },
+    paddingTop: {
+      type: Number,
+      required: false
+    },
     rtag: {
       type: String,
       default: "div"
@@ -409,17 +413,23 @@ var script = defineComponent({
         }, props.wstyle),
         class: props.wclass,
         role: "group"
-      }, list); // let height = props.size * props.remain;
-      // if (props.remain > props.itemcount) {
-      //   height = props.size * props.itemcount;
-      // }
+      }, list);
+      let height = props.size * props.remain;
+
+      if (props.remain > props.itemcount) {
+        height = props.size * props.itemcount;
+      }
+
+      if (props.paddingTop !== undefined) {
+        height = height - props.paddingTop;
+      }
 
       return h(rtag, {
         ref: vsl,
         style: {
           display: "block",
           "overflow-y": props.size >= props.remain ? "auto" : "initial",
-          height: '100%'
+          height: height + "px"
         },
         onScroll: onScroll
       }, [renderList]);

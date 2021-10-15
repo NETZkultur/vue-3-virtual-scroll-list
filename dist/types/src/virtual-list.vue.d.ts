@@ -8,6 +8,10 @@ declare const _default: import("vue").DefineComponent<{
         type: NumberConstructor;
         required: true;
     };
+    paddingTop: {
+        type: NumberConstructor;
+        required: false;
+    };
     rtag: {
         type: StringConstructor;
         default: string;
@@ -76,6 +80,7 @@ declare const _default: import("vue").DefineComponent<{
 }, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     size?: unknown;
     remain?: unknown;
+    paddingTop?: unknown;
     rtag?: unknown;
     wtag?: unknown;
     wclass?: unknown;
@@ -109,7 +114,9 @@ declare const _default: import("vue").DefineComponent<{
     item: Function | Record<string, any>;
     itemcount: number;
     itemprops: Function;
-} & {}>, {
+} & {
+    paddingTop?: number | undefined;
+}>, {
     rtag: string;
     wtag: string;
     wclass: string;
