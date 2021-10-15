@@ -453,11 +453,10 @@ export default defineComponent({
       );
 
       let height = props.size * props.remain;
+
       if (props.remain > props.itemcount) {
         height = props.size * props.itemcount;
-      }
-
-      if (props.paddingTop !== undefined) {
+      } else if (props.paddingTop !== undefined) {
         height = height - props.paddingTop
       }
 

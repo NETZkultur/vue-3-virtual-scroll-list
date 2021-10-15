@@ -477,9 +477,7 @@ function _nonIterableRest() {
 
       if (props.remain > props.itemcount) {
         height = props.size * props.itemcount;
-      }
-
-      if (props.paddingTop !== undefined) {
+      } else if (props.paddingTop !== undefined) {
         height = height - props.paddingTop;
       }
 
