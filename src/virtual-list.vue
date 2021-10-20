@@ -24,6 +24,10 @@ export default defineComponent({
       type: Number,
       required: false
     },
+    windowHeight: {
+      type: Number,
+      required: false
+    },
     rtag: {
       type: String,
       default: "div"
@@ -452,11 +456,18 @@ export default defineComponent({
           list
       );
 
-      let height = props.size * props.remain;
+      let height = 0;
 
-      if (props.remain > props.itemcount) {
-        height = props.size * props.itemcount;
-      } else if (props.paddingTop !== undefined) {
+      if (props.windowHeight !== undefined) {
+        height = props.windowHeight;
+      } else {
+        height = props.size * props.remain;
+        if (props.remain > props.itemcount) {
+          height = props.size * props.itemcount;
+        }
+      }
+
+      if (props.paddingTop !== undefined) {
         height = height - props.paddingTop
       }
 
@@ -466,7 +477,7 @@ export default defineComponent({
             ref: vsl,
             style: {
               display: "block",
-              "overflow-y": props.size >= props.remain ? "auto" : "initial",
+              "overflow-y": props.size * props.itemcount >= height ? "auto" : "initial",
               height: height + "px"
             },
             onScroll: onScroll
