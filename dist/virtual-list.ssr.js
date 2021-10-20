@@ -69,6 +69,10 @@ function _nonIterableRest() {
       type: Number,
       required: false
     },
+    windowHeight: {
+      type: Number,
+      required: false
+    },
     rtag: {
       type: String,
       default: "div"
@@ -473,11 +477,19 @@ function _nonIterableRest() {
         class: props.wclass,
         role: "group"
       }, list);
-      var height = props.size * props.remain;
+      var height = 0;
 
-      if (props.remain > props.itemcount) {
-        height = props.size * props.itemcount;
-      } else if (props.paddingTop !== undefined) {
+      if (props.windowHeight !== undefined) {
+        height = props.windowHeight;
+      } else {
+        height = props.size * props.remain;
+
+        if (props.remain > props.itemcount) {
+          height = props.size * props.itemcount;
+        }
+      }
+
+      if (props.paddingTop !== undefined) {
         height = height - props.paddingTop;
       }
 
@@ -485,7 +497,7 @@ function _nonIterableRest() {
         ref: vsl,
         style: {
           display: "block",
-          "overflow-y": props.size >= props.remain ? "auto" : "initial",
+          "overflow-y": props.size * props.itemcount >= height ? "auto" : "initial",
           height: height + "px"
         },
         onScroll: onScroll

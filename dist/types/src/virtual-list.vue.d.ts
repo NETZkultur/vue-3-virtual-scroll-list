@@ -12,6 +12,10 @@ declare const _default: import("vue").DefineComponent<{
         type: NumberConstructor;
         required: false;
     };
+    windowHeight: {
+        type: NumberConstructor;
+        required: false;
+    };
     rtag: {
         type: StringConstructor;
         default: string;
@@ -81,6 +85,7 @@ declare const _default: import("vue").DefineComponent<{
     size?: unknown;
     remain?: unknown;
     paddingTop?: unknown;
+    windowHeight?: unknown;
     rtag?: unknown;
     wtag?: unknown;
     wclass?: unknown;
@@ -116,6 +121,7 @@ declare const _default: import("vue").DefineComponent<{
     itemprops: Function;
 } & {
     paddingTop?: number | undefined;
+    windowHeight?: number | undefined;
 }>, {
     rtag: string;
     wtag: string;
