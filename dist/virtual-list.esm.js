@@ -132,16 +132,12 @@ var script = defineComponent({
 
     const forceRender = () => {
       window.requestAnimationFrame(() => {
-        var _instance$proxy;
-
-        instance === null || instance === void 0 ? void 0 : (_instance$proxy = instance.proxy) === null || _instance$proxy === void 0 ? void 0 : _instance$proxy.$forceUpdate();
+        instance?.proxy?.$forceUpdate();
       });
     };
 
     const defaultSlot = computed(() => {
-      var _context$slots, _context$slots$defaul;
-
-      const slots = (_context$slots = context.slots) === null || _context$slots === void 0 ? void 0 : (_context$slots$defaul = _context$slots.default) === null || _context$slots$defaul === void 0 ? void 0 : _context$slots$defaul.call(_context$slots);
+      const slots = context.slots?.default?.();
       return slots.map(s => s.type.toString().startsWith("Symbol") ? s.children : s).flat();
     }); // return the right zone info based on `start/index`.
 
@@ -385,6 +381,8 @@ var script = defineComponent({
         param.start = delta.start;
         param.end = delta.end; // props.onscroll(event, param);
       }
+
+      context.emit("onScroll", delta);
 
       if (!offset && delta.total) {
         context.emit("totop");

@@ -447,6 +447,8 @@ function _nonIterableRest() {
         param.end = delta.end; // props.onscroll(event, param);
       }
 
+      context.emit("onScroll", delta);
+
       if (!offset && delta.total) {
         context.emit("totop");
       }
@@ -521,7 +523,7 @@ var component = /*#__PURE__*/(function () {
 })(); // It's possible to expose named exports when writing components that can
 // also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
 // export const RollupDemoDirective = directive;
-var namedExports=/*#__PURE__*/Object.freeze({__proto__:null,'default': component});// only expose one global var, with named exports exposed as properties of
+var namedExports=/*#__PURE__*/Object.freeze({__proto__:null,'default':component});// only expose one global var, with named exports exposed as properties of
 // that global var (eg. plugin.namedExport)
 
 Object.entries(namedExports).forEach(function (_ref) {
