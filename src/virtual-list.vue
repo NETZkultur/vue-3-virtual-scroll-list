@@ -420,6 +420,8 @@ export default defineComponent({
         // props.onscroll(event, param);
       }
 
+      context.emit("onScroll", delta);
+
       if (!offset && delta.total) {
         context.emit("totop");
       }
