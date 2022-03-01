@@ -470,6 +470,10 @@ function _nonIterableRest() {
         list = [vue.h("table", [vue.h("tbody", list)])];
       }
 
+      if (props.paddingTop !== undefined) {
+        paddingTop = props.paddingTop;
+      }
+
       var renderList = vue.h(wtag, {
         style: Object.assign({
           display: "block",

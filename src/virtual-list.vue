@@ -433,7 +433,7 @@ export default defineComponent({
 
     return () => {
       let list = filter();
-      const {paddingTop, paddingBottom} = delta;
+      let {paddingTop, paddingBottom} = delta;
 
       const istable = props.istable;
       const wtag = istable ? "div" : props.wtag;
@@ -441,6 +441,11 @@ export default defineComponent({
       if (istable) {
         list = [h("table", [h("tbody", list)])];
       }
+
+      if (props.paddingTop !== undefined) {
+        paddingTop = props.paddingTop
+      }
+
       const renderList = h(
           wtag,
           {

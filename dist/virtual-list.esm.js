@@ -395,7 +395,7 @@ var script = defineComponent({
 
     return () => {
       let list = filter();
-      const {
+      let {
         paddingTop,
         paddingBottom
       } = delta;
@@ -405,6 +405,10 @@ var script = defineComponent({
 
       if (istable) {
         list = [h("table", [h("tbody", list)])];
+      }
+
+      if (props.paddingTop !== undefined) {
+        paddingTop = props.paddingTop;
       }
 
       const renderList = h(wtag, {
