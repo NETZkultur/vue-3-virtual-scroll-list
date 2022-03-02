@@ -12,6 +12,10 @@ declare const _default: import("vue").DefineComponent<{
         type: NumberConstructor;
         required: false;
     };
+    heightDrain: {
+        type: NumberConstructor;
+        required: false;
+    };
     windowHeight: {
         type: NumberConstructor;
         required: false;
@@ -91,6 +95,10 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     paddingTop: {
+        type: NumberConstructor;
+        required: false;
+    };
+    heightDrain: {
         type: NumberConstructor;
         required: false;
     };
