@@ -14,6 +14,10 @@ var script = defineComponent({
       type: Number,
       required: false
     },
+    heightDrain: {
+      type: Number,
+      required: false
+    },
     windowHeight: {
       type: Number,
       required: false
@@ -405,10 +409,11 @@ var script = defineComponent({
 
       if (istable) {
         list = [h("table", [h("tbody", list)])];
-      } // if (props.paddingTop !== undefined) {
-      //   paddingTop = props.paddingTop
-      // }
+      }
 
+      if (props.paddingTop !== undefined) {
+        paddingTop = props.paddingTop;
+      }
 
       const renderList = h(wtag, {
         style: Object.assign({
@@ -431,8 +436,8 @@ var script = defineComponent({
         }
       }
 
-      if (props.paddingTop !== undefined) {
-        height = height - props.paddingTop;
+      if (props.heightDrain !== undefined) {
+        height = height - props.heightDrain;
       }
 
       return h(rtag, {

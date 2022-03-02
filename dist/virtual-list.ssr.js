@@ -69,6 +69,10 @@ function _nonIterableRest() {
       type: Number,
       required: false
     },
+    heightDrain: {
+      type: Number,
+      required: false
+    },
     windowHeight: {
       type: Number,
       required: false
@@ -468,10 +472,11 @@ function _nonIterableRest() {
 
       if (istable) {
         list = [vue.h("table", [vue.h("tbody", list)])];
-      } // if (props.paddingTop !== undefined) {
-      //   paddingTop = props.paddingTop
-      // }
+      }
 
+      if (props.paddingTop !== undefined) {
+        paddingTop = props.paddingTop;
+      }
 
       var renderList = vue.h(wtag, {
         style: Object.assign({
@@ -494,8 +499,8 @@ function _nonIterableRest() {
         }
       }
 
-      if (props.paddingTop !== undefined) {
-        height = height - props.paddingTop;
+      if (props.heightDrain !== undefined) {
+        height = height - props.heightDrain;
       }
 
       return vue.h(rtag, {

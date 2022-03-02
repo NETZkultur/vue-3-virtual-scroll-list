@@ -24,6 +24,10 @@ export default defineComponent({
       type: Number,
       required: false
     },
+    heightDrain: {
+      type: Number,
+      required: false
+    },
     windowHeight: {
       type: Number,
       required: false
@@ -442,9 +446,9 @@ export default defineComponent({
         list = [h("table", [h("tbody", list)])];
       }
 
-      // if (props.paddingTop !== undefined) {
-      //   paddingTop = props.paddingTop
-      // }
+      if (props.paddingTop !== undefined) {
+        paddingTop = props.paddingTop
+      }
 
       const renderList = h(
           wtag,
@@ -474,8 +478,8 @@ export default defineComponent({
         }
       }
 
-      if (props.paddingTop !== undefined) {
-        height = height - props.paddingTop
+      if (props.heightDrain !== undefined) {
+        height = height - props.heightDrain
       }
 
       return h(
