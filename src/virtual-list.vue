@@ -442,9 +442,9 @@ export default defineComponent({
         list = [h("table", [h("tbody", list)])];
       }
 
-      if (props.paddingTop !== undefined) {
-        paddingTop = props.paddingTop
-      }
+      // if (props.paddingTop !== undefined) {
+      //   paddingTop = props.paddingTop
+      // }
 
       const renderList = h(
           wtag,
