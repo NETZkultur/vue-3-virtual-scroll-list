@@ -418,6 +418,7 @@ var script = defineComponent({
       const renderList = h(wtag, {
         style: Object.assign({
           display: "block",
+          height: "100% !important",
           "padding-top": paddingTop + "px",
           "padding-bottom": paddingBottom + "px"
         }, props.wstyle),
