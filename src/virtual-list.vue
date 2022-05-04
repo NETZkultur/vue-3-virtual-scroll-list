@@ -456,6 +456,7 @@ export default defineComponent({
             style: Object.assign(
                 {
                   display: "block",
+                  height: "100% !important",
                   "padding-top": paddingTop + "px",
                   "padding-bottom": paddingBottom + "px"
                 },
