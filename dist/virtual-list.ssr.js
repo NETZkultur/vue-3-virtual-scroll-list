@@ -143,6 +143,10 @@ function _nonIterableRest() {
       /* istanbul ignore next */
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       default: function _default() {}
+    },
+    noOverflow: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -507,7 +511,7 @@ function _nonIterableRest() {
         ref: vsl,
         style: {
           display: "block",
-          "overflow-y": props.size * props.itemcount >= height ? "auto" : "initial",
+          "overflow-y": props.noOverflow ? "hidden" : props.size * props.itemcount >= height ? "auto" : "initial",
           height: height + "px"
         },
         onScroll: onScroll

@@ -80,6 +80,10 @@ declare const _default: import("vue").DefineComponent<{
         type: FunctionConstructor;
         default: () => void;
     };
+    noOverflow: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
 }, () => VNode<import("vue").RendererNode, import("vue").RendererElement, {
     [key: string]: any;
 }>, unknown, {}, {
@@ -166,6 +170,10 @@ declare const _default: import("vue").DefineComponent<{
         type: FunctionConstructor;
         default: () => void;
     };
+    noOverflow: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
 }>>, {
     rtag: string;
     wtag: string;
@@ -182,5 +190,6 @@ declare const _default: import("vue").DefineComponent<{
     item: Function | Record<string, any>;
     itemcount: number;
     itemprops: Function;
+    noOverflow: boolean;
 }>;
 export default _default;
