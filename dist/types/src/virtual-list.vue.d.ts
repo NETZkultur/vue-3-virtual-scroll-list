@@ -76,6 +76,10 @@ declare const _default: import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    summarizedSizeOfAllItems: {
+        type: NumberConstructor;
+        default: number;
+    };
     itemprops: {
         type: FunctionConstructor;
         default: () => void;
@@ -166,6 +170,10 @@ declare const _default: import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    summarizedSizeOfAllItems: {
+        type: NumberConstructor;
+        default: number;
+    };
     itemprops: {
         type: FunctionConstructor;
         default: () => void;
@@ -189,6 +197,7 @@ declare const _default: import("vue").DefineComponent<{
     istable: boolean;
     item: Function | Record<string, any>;
     itemcount: number;
+    summarizedSizeOfAllItems: number;
     itemprops: Function;
     noOverflow: boolean;
 }>;

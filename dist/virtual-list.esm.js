@@ -79,6 +79,10 @@ var script = defineComponent({
       type: Number,
       default: 0
     },
+    summarizedSizeOfAllItems: {
+      type: Number,
+      default: 0
+    },
     itemprops: {
       type: Function,
 
@@ -448,7 +452,7 @@ var script = defineComponent({
         ref: vsl,
         style: {
           display: "block",
-          "overflow-y": props.noOverflow ? "hidden" : props.size * props.itemcount >= height ? "auto" : "initial",
+          "overflow-y": props.noOverflow ? "hidden" : props.summarizedSizeOfAllItems >= height ? "auto" : "initial",
           height: height + "px"
         },
         onScroll: onScroll
