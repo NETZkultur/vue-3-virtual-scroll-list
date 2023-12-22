@@ -511,7 +511,7 @@ function _nonIterableRest() {
         ref: vsl,
         style: {
           display: "block",
-          "overflow-y": props.noOverflow ? "hidden" : props.size * props.itemcount >= height ? "auto" : "initial",
+          "overflow-y": props.noOverflow ? "hidden" : "auto",
           height: height + "px"
         },
         onScroll: onScroll
