@@ -483,7 +483,7 @@ export default defineComponent({
                     ref: vsl,
                     style: {
                         display: "block",
-                        "overflow-y": props.noOverflow ? "hidden" : "auto",
+                        "overflow-y": props.noOverflow ? "hidden" : props.size * props.itemcount >= height ? "auto" : "initial",
                         height: height + "px"
                     },
                     onScroll: onScroll
