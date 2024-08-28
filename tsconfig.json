@@ -25,10 +25,7 @@
             ]
         },
         "plugins": [
-            {
-                "transform":"@zerollup/ts-transform-paths",
-                "exclude": ["*"]
-            }
+
         ],
         "lib": [
             "esnext",

@@ -8,8 +8,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import babel from '@rollup/plugin-babel';
 import PostCSS from 'rollup-plugin-postcss';
-import { terser } from 'rollup-plugin-terser';
-import ttypescript from 'ttypescript';
+import terser from '@rollup/plugin-terser';
+// import ttypescript from 'ttypescript';
 import typescript from 'rollup-plugin-typescript2';
 import minimist from 'minimist';
 
@@ -103,11 +103,11 @@ if (!argv.format || argv.format === 'es') {
       ...baseConfig.plugins.postVue,
       // Only use typescript for declarations - babel will
       // do actual js transformations
-      typescript({
-        typescript: ttypescript,
-        useTsconfigDeclarationDir: true,
-        emitDeclarationOnly: true,
-      }),
+      // typescript({
+      //   typescript: ttypescript,
+      //   useTsconfigDeclarationDir: true,
+      //   emitDeclarationOnly: true,
+      // }),
       babel({
         ...baseConfig.plugins.babel,
         presets: [
