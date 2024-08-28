@@ -402,7 +402,7 @@ export default defineComponent({
         const onScroll = () => {
             let offset;
 
-            offset = vsl.value.scrollTop || 0;
+            offset = vsl.value?.scrollTop || 0;
 
             delta.direction = offset > delta.scrollTop ? "D" : "U";
             delta.scrollTop = offset;
